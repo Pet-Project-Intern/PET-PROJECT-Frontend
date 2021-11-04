@@ -1,0 +1,43 @@
+.nav {
+  background-color: #7f42fc;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-name {
+  color: white;
+  padding: 0 15px;
+}
+.avater-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  background-color: #3c4858;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.avater {
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a5a6f6;
+}
+.bell {
+  color: #3c4858;
+}
+
+.list {
+  color: #a5a6f6;
+  font-size: 25px;
+}
