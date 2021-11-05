@@ -1,0 +1,12 @@
+.header h1{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.header h3{
+    margin-left: 5%;
+}
+
+.home-img{
+    max-width: inherit;
+}
