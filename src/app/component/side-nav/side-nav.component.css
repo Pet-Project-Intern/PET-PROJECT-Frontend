@@ -1,6 +1,6 @@
 .side-nav {
   height: 90vh;
-  width: 220px;
+  width: 18vw;
   background-color: #3c4858;
   display: flex;
   flex-direction: column;
@@ -11,9 +11,6 @@
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.log-out-icon {
 }
 
 .log-out {
