@@ -1,0 +1,47 @@
+.side-nav {
+  height: 90vh;
+  width: 220px;
+  background-color: #3c4858;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #8492a6;
+}
+.nav-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.log-out-icon {
+}
+
+.log-out {
+  justify-content: space-around;
+  text-align: center;
+  border-top: 1px solid #8492a6;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+.log-out:hover {
+  color: #c2cedb;
+  cursor: pointer;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  text-align: left;
+  cursor: pointer;
+  border-left: 5px solid #3c4858;
+}
+.nav-item > fa-icon {
+  padding-right: 15px;
+}
+
+.nav-item:hover {
+  border-left: 5px solid;
+  color: #c2cedb;
+}
