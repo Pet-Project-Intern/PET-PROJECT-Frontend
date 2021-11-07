@@ -8,10 +8,24 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SideNavComponent } from './component/side-nav/side-nav.component';
 import { ContentComponent } from './component/content/content.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, SideNavComponent, ContentComponent],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, BrowserAnimationsModule],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    SideNavComponent,
+    ContentComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

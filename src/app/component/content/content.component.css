@@ -11,6 +11,7 @@
   height: 100%;
   border-radius: 5px;
   padding: 0 15px;
+  position: relative;
 }
 
 .action {
@@ -45,4 +46,16 @@
   outline: none;
   background-color: #f2f3f7;
   width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.paginator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
 }
