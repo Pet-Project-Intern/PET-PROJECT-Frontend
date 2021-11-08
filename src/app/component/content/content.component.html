@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="content">
+    <h2>User Management</h2>
+    <div class="action">
+      <button class="add-btn">Add User</button>
+      <div class="search-warpper">
+        <input class="search" type="text" placeholder="Search User" />
+        <fa-icon [icon]="faSearch"></fa-icon>
+      </div>
+    </div>
+
+    <!-- <div class="mat-elevation-z8 test"> -->
+    <div>
+      <table class="user-table" mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="userID">
+          <th mat-header-cell *matHeaderCellDef>User ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.userID }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          hello
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="department">
+          <th mat-header-cell *matHeaderCellDef>Department</th>
+          <td mat-cell *matCellDef="let element">{{ element.department }}</td>
+        </ng-container>
+        <ng-container matColumnDef="assignDate">
+          <th mat-header-cell *matHeaderCellDef>Assign Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.assignDate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td class="user-action" mat-cell *matCellDef="let element">
+            <button class="action-btn" [matMenuTriggerFor]="menu">
+              <fa-icon [icon]="faEllipsisH"> </fa-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <fa-icon [icon]="faEdit"> </fa-icon> Edit User
+              </button>
+              <button class="user-delete" mat-menu-item>
+                <fa-icon [icon]="faTrash"> </fa-icon> Delete User
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator
+      class="paginator"
+      [pageSizeOptions]="[10]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

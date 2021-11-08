@@ -1,0 +1,83 @@
+.container {
+  height: 90vh;
+  width: 82vw;
+  box-sizing: border-box;
+  padding: 20px 40px;
+}
+
+.content {
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  height: 100%;
+  border-radius: 5px;
+  padding: 0 15px;
+  position: relative;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3c4858;
+  cursor: pointer;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #2f3741;
+}
+
+.search-warpper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f2f3f7;
+  border-radius: 5px;
+  width: 84%;
+}
+.search {
+  border: none;
+  outline: none;
+  background-color: #f2f3f7;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.paginator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+tr.mat-row {
+  height: 5vh !important;
+}
+
+tr.mat-header-row {
+  height: 7vh !important;
+}
+.user-action {
+  cursor: pointer;
+}
+
+.action-btn {
+  background-color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.user-delete {
+  color: red;
+}
