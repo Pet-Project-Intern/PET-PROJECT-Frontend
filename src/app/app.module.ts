@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { BackgroundComponent } from './shared/background/background.component';
 import { DefaultComponent } from './layouts/default/default.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { DefaultComponent } from './layouts/default/default.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
