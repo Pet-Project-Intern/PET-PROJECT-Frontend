@@ -1,5 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSearch,
+  faEllipsisH,
+  faTrash,
+  faEdit,
+} from '@fortawesome/free-solid-svg-icons';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -19,6 +24,9 @@ export class ContentComponent implements AfterViewInit, OnInit {
   ];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   faSearch = faSearch;
+  faEllipsisH = faEllipsisH;
+  faTrash = faTrash;
+  faEdit = faEdit;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   constructor() {}

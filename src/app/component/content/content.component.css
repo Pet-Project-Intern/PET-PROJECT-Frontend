@@ -70,3 +70,14 @@ tr.mat-header-row {
 .user-action {
   cursor: pointer;
 }
+
+.action-btn {
+  background-color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.user-delete {
+  color: red;
+}

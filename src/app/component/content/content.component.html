@@ -39,7 +39,19 @@
         </ng-container>
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td class="user-action" mat-cell *matCellDef="let element">. . .</td>
+          <td class="user-action" mat-cell *matCellDef="let element">
+            <button class="action-btn" [matMenuTriggerFor]="menu">
+              <fa-icon [icon]="faEllipsisH"> </fa-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <fa-icon [icon]="faEdit"> </fa-icon> Edit User
+              </button>
+              <button class="user-delete" mat-menu-item>
+                <fa-icon [icon]="faTrash"> </fa-icon> Delete User
+              </button>
+            </mat-menu>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
