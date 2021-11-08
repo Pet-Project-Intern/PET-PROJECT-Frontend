@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { BackgroundComponent } from './shared/background/background.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     SignupComponent,
     PopupNewuserComponent,
+    BackgroundComponent,
   ],
   imports: [
     BrowserModule,
