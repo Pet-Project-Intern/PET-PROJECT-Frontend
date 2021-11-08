@@ -4,7 +4,7 @@ import { UserInfoComponent } from './component/user-info/user-info.component';
 import { HomeComponent } from './component/login/home.component';
 
 const routes: Routes = [
-  { path: 'user-info', component: UserInfoComponent },
+  { path: '', component: UserInfoComponent },
   { path: 'login', component: HomeComponent },
 ];
 

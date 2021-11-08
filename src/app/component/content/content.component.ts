@@ -7,6 +7,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupNewuserComponent } from '../popup-newuser/popup-newuser.component';
 
 @Component({
   selector: 'app-content',
@@ -14,6 +16,9 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements AfterViewInit, OnInit {
+  animal!: string;
+  name!: string;
+
   displayedColumns: string[] = [
     'userID',
     'name',
@@ -29,12 +34,26 @@ export class ContentComponent implements AfterViewInit, OnInit {
   faEdit = faEdit;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  constructor() {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {}
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PopupNewuserComponent, {
+      width: '400px',
+      height: '92vh',
+      data: { name: this.name, animal: this.animal },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 }
 
 export interface PeriodicElement {
@@ -43,6 +62,11 @@ export interface PeriodicElement {
   email: string;
   department: string;
   assignDate: string;
+}
+
+export interface DialogData {
+  animal: string;
+  name: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
