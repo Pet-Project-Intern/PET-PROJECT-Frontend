@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { BackgroundComponent } from './shared/background/background.component';
+import { DefaultComponent } from './layouts/default/default.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BackgroundComponent } from './shared/background/background.component';
     SignupComponent,
     PopupNewuserComponent,
     BackgroundComponent,
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,
