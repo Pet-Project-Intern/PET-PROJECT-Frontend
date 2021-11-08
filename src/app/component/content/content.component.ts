@@ -9,7 +9,14 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [
+    'userID',
+    'name',
+    'email',
+    'department',
+    'assignDate',
+    'action',
+  ];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   faSearch = faSearch;
   @ViewChild(MatPaginator)
@@ -23,31 +30,152 @@ export class ContentComponent implements AfterViewInit, OnInit {
 }
 
 export interface PeriodicElement {
+  userID: number;
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  email: string;
+  department: string;
+  assignDate: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+  {
+    userID: 1,
+    name: 'Hydrogen',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 2,
+    name: 'Helium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 3,
+    name: 'Lithium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 4,
+    name: 'Beryllium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 5,
+    name: 'Boron',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 6,
+    name: 'Carbon',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 7,
+    name: 'Nitrogen',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 8,
+    name: 'Oxygen',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 9,
+    name: 'Fluorine',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 10,
+    name: 'Neon',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 11,
+    name: 'Sodium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 12,
+    name: 'Magnesium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 13,
+    name: 'Aluminum',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 14,
+    name: 'Silicon',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 15,
+    name: 'Phosphorus',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 16,
+    name: 'Sulfur',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 17,
+    name: 'Chlorine',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 18,
+    name: 'Argon',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 19,
+    name: 'Potassium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
+  {
+    userID: 20,
+    name: 'Calcium',
+    email: 'lakshanamal100@gmail.com',
+    department: 'HR',
+    assignDate: '2021-10-05',
+  },
 ];
