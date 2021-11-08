@@ -1,0 +1,90 @@
+.popup-wrapper {
+  position: relative;
+  padding: 20px;
+}
+.propup-title {
+}
+
+.propup-title > h1 {
+  margin-bottom: -5px;
+}
+
+.title-intro {
+  font-size: 12px;
+}
+
+.close-icon {
+  font-size: 25px;
+  color: #f94949;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  cursor: pointer;
+}
+
+.input-wrapper {
+  width: 100%;
+}
+
+.input-wrapper h4 {
+  font-size: 16px;
+  font-weight: bolder;
+  padding-top: 15px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  background-color: #f2f3f7;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.register-btn {
+  background-color: #7f42fc;
+  padding: 12px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bolder;
+  margin: 20px 0;
+}
+
+.register-btn:hover {
+  background-color: #6627e6;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.date-picker {
+  width: 100%;
+  background-color: #f2f3f7;
+  border-radius: 5px;
+  padding: 0 20px;
+}
+
+.date-input {
+  background-color: #f2f3f7;
+  border: none;
+  outline: none;
+  width: 83%;
+}
+
+.select-dep {
+  display: flex;
+  background-color: #f2f3f7;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.mat-dialog-actions {
+  margin-bottom: 0 !important;
+}

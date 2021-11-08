@@ -1,0 +1,54 @@
+<div class="popup-wrapper">
+  <fa-icon
+    (click)="onNoClick()"
+    class="close-icon"
+    [icon]="faTimesCircle"
+  ></fa-icon>
+  <div class="propup-title">
+    <h1 mat-dialog-title>Register New User</h1>
+    <span class="title-intro"
+      >Add New User Access to the System and Assign Assets.</span
+    >
+  </div>
+  <div class="bg" mat-dialog-content>
+    <div class="input-wrapper">
+      <h4>Employee Name</h4>
+      <input class="input" type="text" placeholder="employee name" />
+    </div>
+    <div class="input-wrapper">
+      <h4>Email Address</h4>
+      <input class="input" type="text" placeholder="email address" />
+    </div>
+
+    <div class="input-wrapper">
+      <h4>Register Date</h4>
+      <div class="date-picker">
+        <input
+          placeholder="Choose a Date"
+          class="date-input"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <h4>Assign Department</h4>
+      <div class="select-dep">
+        <mat-select placeholder="Select Department">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button class="register-btn" mat-button (click)="onNoClick()">
+        Register User
+      </button>
+    </div>
+  </div>
+</div>

@@ -11,8 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
 import { UserInfoComponent } from './component/user-info/user-info.component';
 import { NavComponent } from './component/nav/nav.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopupNewuserComponent } from './component/popup-newuser/popup-newuser.component';
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { BackgroundComponent } from './shared/background/background.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +31,8 @@ import { NavComponent } from './component/nav/nav.component';
     UserInfoComponent,
     HomeComponent,
     SignupComponent,
+    PopupNewuserComponent,
+    BackgroundComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +42,12 @@ import { NavComponent } from './component/nav/nav.component';
     MatTableModule,
     MatPaginatorModule,
     MatMenuModule,
+    MatInputModule,
+    FormsModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
