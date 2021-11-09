@@ -5,6 +5,7 @@ import { UserInfoComponent } from './component/user-info/user-info.component';
 import { HomeComponent } from './component/home/home.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { SignupComponent } from './component/signup/signup.component';
+import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 
 const routes: Routes = [
   // { path: '', component: UserInfoComponent },
@@ -18,6 +19,9 @@ const routes: Routes = [
     },{
       path:'signup',
       component: SignupComponent
+    },{
+      path:'forgetPassword',
+      component: ForgetPwComponent
     }]
   }
 ];

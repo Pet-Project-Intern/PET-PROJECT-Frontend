@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BackgroundComponent } from './shared/background/background.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PopupNewuserComponent,
     BackgroundComponent,
     DefaultComponent,
+    ForgetPwComponent,
   ],
   imports: [
     BrowserModule,
