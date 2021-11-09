@@ -2,11 +2,28 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { UserInfoComponent } from './component/user-info/user-info.component';
-import { HomeComponent } from './component/login/home.component';
+import { HomeComponent } from './component/home/home.component';
+import { DefaultComponent } from './layouts/default/default.component';
+import { SignupComponent } from './component/signup/signup.component';
+import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 
 const routes: Routes = [
-  { path: '', component: UserInfoComponent },
-  { path: 'login', component: HomeComponent },
+  // { path: '', component: UserInfoComponent },
+  // { path: 'login', component: HomeComponent },
+  {
+    path:'',
+    component: DefaultComponent,
+    children:[{
+      path:'',
+      component: HomeComponent
+    },{
+      path:'signup',
+      component: SignupComponent
+    },{
+      path:'forgetPassword',
+      component: ForgetPwComponent
+    }]
+  }
 ];
 
 @NgModule({

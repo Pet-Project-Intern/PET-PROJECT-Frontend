@@ -3,18 +3,16 @@ import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-forget-pw',
+  templateUrl: './forget-pw.component.html',
+  styleUrls: ['./forget-pw.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ForgetPwComponent implements OnInit {
 
   faFcebook = faFacebookSquare;
   faLinkedin = faLinkedin;
   faInsta = faInstagram;
-
   constructor() { }
 
   ngOnInit(): void {
