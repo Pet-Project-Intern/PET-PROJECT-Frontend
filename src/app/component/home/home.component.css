@@ -4,3 +4,15 @@
     background-color: #24272E;
     color: aliceblue;
   }
+  .details .line{
+    display: flex;
+    margin-top: 3%;
+    align-items: center;
+  }
+  .details .line hr{
+    margin: 5%;
+    width: 50%;
+  }
+  .errmsg{
+    color: #F94949;
+  }
