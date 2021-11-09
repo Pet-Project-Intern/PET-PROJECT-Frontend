@@ -1,8 +1,6 @@
 .popup-wrapper {
   position: relative;
-  padding: 20px;
-}
-.propup-title {
+  padding: 10px 20px 0 20px;
 }
 
 .propup-title > h1 {
@@ -87,4 +85,20 @@
 
 .mat-dialog-actions {
   margin-bottom: 0 !important;
+}
+
+.error {
+  font-weight: bolder;
+  color: red;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.mat-dialog-container {
+  padding: 10px !important;
+  background-color: red;
+}
+
+.mat-dialog-content {
+  max-height: initial;
 }
