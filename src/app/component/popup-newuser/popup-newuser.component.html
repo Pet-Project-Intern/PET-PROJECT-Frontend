@@ -107,6 +107,7 @@
         <button
           type="submit"
           class="register-btn"
+          [ngClass]="{ 'register-btn-active': !addUserForm.invalid }"
           mat-button
           (click)="onNoClick()"
           [disabled]="addUserForm.invalid"

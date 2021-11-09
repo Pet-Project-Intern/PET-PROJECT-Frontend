@@ -4,9 +4,11 @@ export interface Departments {
 }
 
 export interface UserInfo {
-  userID: number;
+  id: string;
   name: string;
-  email: string;
+  emailId: string;
   department: string;
-  assignDate: string;
+  registerDate: string;
+  userCategory: string;
+  password: string;
 }

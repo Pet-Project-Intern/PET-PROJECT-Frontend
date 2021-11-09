@@ -19,6 +19,7 @@ import { UserInfo } from 'src/app/types/user-info';
   providers: [UserinfoService],
 })
 export class ContentComponent implements AfterViewInit, OnInit {
+  constructor(public dialog: MatDialog, private Data: UserinfoService) {}
   displayedColumns: string[] = [
     'userID',
     'name',
@@ -27,7 +28,8 @@ export class ContentComponent implements AfterViewInit, OnInit {
     'assignDate',
     'action',
   ];
-  dataSource = new MatTableDataSource<UserInfo>(this.Data.getUserInfo());
+
+  dataSource = new MatTableDataSource<UserInfo>();
   faSearch = faSearch;
   faEllipsisH = faEllipsisH;
   faTrash = faTrash;
@@ -38,9 +40,17 @@ export class ContentComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  ngOnInit() {}
-
-  constructor(public dialog: MatDialog, private Data: UserinfoService) {}
+  ngOnInit() {
+    this.Data.getEmployeeInfo().subscribe(
+      (users) => {
+        this.dataSource.data = users;
+        this.dataSource.paginator = this.paginator;
+        //  this.dataSource.sort = this.sort;
+        console.log(this.dataSource);
+      },
+      (error) => console.log(error)
+    );
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupNewuserComponent, {

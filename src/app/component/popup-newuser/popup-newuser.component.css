@@ -40,7 +40,7 @@
 }
 
 .register-btn {
-  background-color: #7f42fc;
+  background-color: #7c7c7c;
   padding: 12px;
   width: 100%;
   outline: none;
@@ -49,9 +49,14 @@
   color: white;
   font-weight: bolder;
   margin: 20px 0;
+  cursor: pointer;
 }
 
-.register-btn:hover {
+.register-btn-active {
+  background-color: #7f42fc !important;
+}
+
+.register-btn-active:hover {
   background-color: #6627e6;
 }
 

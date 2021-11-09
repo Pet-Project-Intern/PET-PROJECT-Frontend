@@ -3,17 +3,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../content/content.component';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Departments } from 'src/app/types/user-info';
-import {
-  FormBuilder,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { UserinfoService } from '../../service/userinfo.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-popup-newuser',
   templateUrl: './popup-newuser.component.html',
   styleUrls: ['./popup-newuser.component.css'],
+  providers: [UserinfoService],
 })
 export class PopupNewuserComponent implements OnInit {
   faTimesCircle = faTimesCircle;
@@ -25,7 +22,8 @@ export class PopupNewuserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<PopupNewuserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userInfo: UserinfoService
   ) {}
 
   addUserForm: FormGroup = this.formBuilder.group({
@@ -45,7 +43,7 @@ export class PopupNewuserComponent implements OnInit {
   });
 
   onSubmit(): void {
-    console.log(this.addUserForm.value);
+    this.userInfo.userSave(this.addUserForm.value);
   }
 
   control(name: string) {
