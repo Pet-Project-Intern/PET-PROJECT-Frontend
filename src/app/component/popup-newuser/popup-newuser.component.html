@@ -10,45 +10,111 @@
       >Add New User Access to the System and Assign Assets.</span
     >
   </div>
-  <div class="bg" mat-dialog-content>
-    <div class="input-wrapper">
-      <h4>Employee Name</h4>
-      <input class="input" type="text" placeholder="employee name" />
-    </div>
-    <div class="input-wrapper">
-      <h4>Email Address</h4>
-      <input class="input" type="text" placeholder="email address" />
-    </div>
-
-    <div class="input-wrapper">
-      <h4>Register Date</h4>
-      <div class="date-picker">
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="user-form">
+      <div class="input-wrapper">
+        <h4>Employee Name</h4>
+        <p
+          class="error"
+          *ngIf="control('name')?.errors?.required && control('name')?.touched"
+        >
+          *Name is required
+        </p>
         <input
-          placeholder="Choose a Date"
-          class="date-input"
-          matInput
-          [matDatepicker]="picker"
+          class="input"
+          type="text"
+          placeholder="employee name"
+          formControlName="name"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <div class="input-wrapper">
+        <h4>Email Address</h4>
+        <div>
+          <p
+            class="error"
+            *ngIf="
+              control('email')?.errors?.required && control('email')?.touched
+            "
+          >
+            *Email address is required
+          </p>
+        </div>
+        <p
+          class="error"
+          *ngIf="control('email')?.invalid && control('email')?.touched"
+        >
+          *Email not valid
+        </p>
+        <input
+          class="input"
+          placeholder="email address"
+          formControlName="email"
+          type="text"
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <h4>Register Date</h4>
+        <p
+          class="error"
+          *ngIf="control('date')?.errors?.required && control('date')?.touched"
+        >
+          *Register date address is required
+        </p>
+        <div class="date-picker">
+          <input
+            placeholder="Choose a Date"
+            class="date-input"
+            matInput
+            [matDatepicker]="picker"
+            formControlName="date"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <h4>Assign Department</h4>
+        <p
+          class="error"
+          *ngIf="
+            control('department')?.errors?.required &&
+            control('department')?.touched
+          "
+        >
+          *Assign department is required
+        </p>
+        <div class="select-dep">
+          <mat-select
+            placeholder="Select Department"
+            formControlName="department"
+          >
+            <mat-option
+              *ngFor="let Department of Departments"
+              [value]="Department.value"
+            >
+              {{ Department.viewValue }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div mat-dialog-actions>
+        <button
+          type="submit"
+          class="register-btn"
+          [ngClass]="{ 'register-btn-active': !addUserForm.invalid }"
+          mat-button
+          (click)="onNoClick()"
+          [disabled]="addUserForm.invalid"
+        >
+          Register User
+        </button>
       </div>
     </div>
-
-    <div class="input-wrapper">
-      <h4>Assign Department</h4>
-      <div class="select-dep">
-        <mat-select placeholder="Select Department">
-          <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{ food.viewValue }}
-          </mat-option>
-        </mat-select>
-      </div>
-    </div>
-
-    <div mat-dialog-actions>
-      <button class="register-btn" mat-button (click)="onNoClick()">
-        Register User
-      </button>
-    </div>
-  </div>
+  </form>
 </div>

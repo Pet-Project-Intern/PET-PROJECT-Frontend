@@ -24,6 +24,7 @@ import { BackgroundComponent } from './shared/background/background.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
     MatSelectModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

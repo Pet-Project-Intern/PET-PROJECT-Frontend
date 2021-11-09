@@ -9,16 +9,17 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupNewuserComponent } from '../popup-newuser/popup-newuser.component';
+import { UserinfoService } from '../../service/userinfo.service';
+import { UserInfo } from 'src/app/types/user-info';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css'],
+  providers: [UserinfoService],
 })
 export class ContentComponent implements AfterViewInit, OnInit {
-  animal!: string;
-  name!: string;
-
+  constructor(public dialog: MatDialog, private Data: UserinfoService) {}
   displayedColumns: string[] = [
     'userID',
     'name',
@@ -27,7 +28,8 @@ export class ContentComponent implements AfterViewInit, OnInit {
     'assignDate',
     'action',
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+  dataSource = new MatTableDataSource<UserInfo>();
   faSearch = faSearch;
   faEllipsisH = faEllipsisH;
   faTrash = faTrash;
@@ -38,176 +40,33 @@ export class ContentComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  ngOnInit() {}
-
-  constructor(public dialog: MatDialog) {}
+  ngOnInit() {
+    this.Data.getEmployeeInfo().subscribe(
+      (users) => {
+        this.dataSource.data = users;
+        this.dataSource.paginator = this.paginator;
+        //  this.dataSource.sort = this.sort;
+        console.log(this.dataSource);
+      },
+      (error) => console.log(error)
+    );
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupNewuserComponent, {
       width: '400px',
-      height: '92vh',
-      data: { name: this.name, animal: this.animal },
+      height: '90vh',
+      // data: { name: this.name, animal: this.animal },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.animal = result;
+      // this.animal = result;
     });
   }
-}
-
-export interface PeriodicElement {
-  userID: number;
-  name: string;
-  email: string;
-  department: string;
-  assignDate: string;
 }
 
 export interface DialogData {
   animal: string;
   name: string;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    userID: 1,
-    name: 'Hydrogen',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 2,
-    name: 'Helium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 3,
-    name: 'Lithium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 4,
-    name: 'Beryllium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 5,
-    name: 'Boron',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 6,
-    name: 'Carbon',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 7,
-    name: 'Nitrogen',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 8,
-    name: 'Oxygen',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 9,
-    name: 'Fluorine',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 10,
-    name: 'Neon',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 11,
-    name: 'Sodium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 12,
-    name: 'Magnesium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 13,
-    name: 'Aluminum',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 14,
-    name: 'Silicon',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 15,
-    name: 'Phosphorus',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 16,
-    name: 'Sulfur',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 17,
-    name: 'Chlorine',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 18,
-    name: 'Argon',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 19,
-    name: 'Potassium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-  {
-    userID: 20,
-    name: 'Calcium',
-    email: 'lakshanamal100@gmail.com',
-    department: 'HR',
-    assignDate: '2021-10-05',
-  },
-];
