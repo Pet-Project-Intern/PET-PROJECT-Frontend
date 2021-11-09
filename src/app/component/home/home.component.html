@@ -14,25 +14,19 @@
           <form [formGroup]="form">
             <div>
               <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"
-              
-              >
-              <div id="validationEmail" class="invalid-feedback">
-                Please Provide Email
-              </div>
+              <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" formControlName="email">
+              <span class="errmsg" *ngIf="email && email.invalid && email.touched">Please Enter Valid Email</span> 
             </div>
             <div>
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="passwordInput" placeholder="your password">
-              <div id="validationPassword" class="invalid-feedback">
-                Please Provide Your Password
-              </div>
+              <input type="password" class="form-control" id="passwordInput" placeholder="your password" formControlName="password">
+              <span class="errmsg" *ngIf="password && password.invalid && password.touched">Please Provide Valid Password</span>
             </div>
             <div class="pt-2">
               <h6 routerLink="/forgetPassword" [ngStyle]="{cursor:'help'}">Forget Password?</h6>
             </div>
-            <a href="#" class="btn disabled" tabindex="-1" role="button" aria-disabled="true">Login</a>
-            <div class="line">
+            <button [disabled]="form.invalid" class="btn" tabindex="-1" role="button" aria-disabled="true">Login</button>
+            <div class="line"> 
               <hr> or
               <hr>
             </div>

@@ -31,16 +31,6 @@ body {
 .details label{
   margin-top: 5%;
 }
-
-.details .line{
-  display: flex;
-  margin-top: 3%;
-  align-items: center;
-}
-.details .line hr{
-  margin: 5%;
-  width: 50%;
-}
 .bottom{
   margin-left: 12%;
   bottom: 0;

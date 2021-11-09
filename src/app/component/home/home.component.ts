@@ -17,8 +17,8 @@ export class HomeComponent implements OnInit {
   faInsta = faInstagram;
 
   form = new FormGroup({
-    email: new FormControl('', Validators.required),
-    
+    email: new FormControl('', [Validators.required,Validators.email]),
+    password: new FormControl('', [Validators.required,Validators.minLength(6)]),
   })
 
   constructor() { }
@@ -26,4 +26,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get email(){
+    return this.form.get('email');
+  }
+  get password(){
+    return this.form.get('password');
+  }
 }
