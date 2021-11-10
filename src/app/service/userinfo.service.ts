@@ -3,29 +3,39 @@ import { UserInfo } from '../types/user-info';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserinfoService {
   private baseUrl = 'http://localhost:8084/user';
-  constructor(private http: HttpClient) {}
-
-  // getUserInfo(): UserInfo[] {
-  //   // console.log(this.http.get<UserInfo[]>(`${this.baseUrl}/employee`));
-  //   return this.ELEMENT_DATA;
-  // }
+  constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   getEmployeeInfo(): Observable<UserInfo[]> {
     return this.http.get<UserInfo[]>(`${this.baseUrl}/employee`);
+    // .pipe(catchError(console.log('err')));
   }
 
   userLogOut(): void {
     alert('user logout sucessfull');
   }
 
-  userSave(userDate: UserInfo): void {
-    console.log(userDate);
-    alert(userDate);
+  userSave(userData: UserInfo): Observable<string> {
+    let registerDate: Date = new Date(userData.registerDate);
+    let dateFormat: string = this.datePipe.transform(
+      registerDate,
+      'yyyy-MM-dd'
+    ) as string;
+    userData.registerDate = dateFormat;
+    userData.userCategory = 'employee';
+    userData.password = 'example12';
+    // console.log(this.http.post<UserInfo>(`${this.baseUrl}/register`, userData));
+    return this.http.post<string>(`${this.baseUrl}/register`, userData);
+
+    // console.log(userData);
+
+    // deleteUser(id: string): Observable<unknown>{
+    //
   }
 }

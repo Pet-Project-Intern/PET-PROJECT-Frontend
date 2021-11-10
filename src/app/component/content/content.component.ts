@@ -41,6 +41,10 @@ export class ContentComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
+    this.getAllEmployee();
+  }
+
+  getAllEmployee() {
     this.Data.getEmployeeInfo().subscribe(
       (users) => {
         this.dataSource.data = users;
@@ -56,17 +60,11 @@ export class ContentComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(PopupNewuserComponent, {
       width: '400px',
       height: '90vh',
-      // data: { name: this.name, animal: this.animal },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      this.getAllEmployee();
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
-}
-
-export interface DialogData {
-  animal: string;
-  name: string;
 }
