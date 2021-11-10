@@ -9,7 +9,8 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root',
 })
 export class UserinfoService {
-  private baseUrl = 'http://localhost:8084/user';
+  // private baseUrl = 'http://localhost:8084/user';
+  private baseUrl = 'http://127.0.0.1:4759/user';
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   getEmployeeInfo(): Observable<UserInfo[]> {
