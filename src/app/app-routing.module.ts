@@ -8,22 +8,26 @@ import { SignupComponent } from './component/signup/signup.component';
 import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 
 const routes: Routes = [
-  // { path: '', component: UserInfoComponent },
-  // { path: 'login', component: HomeComponent },
+  { path: 'user', component: UserInfoComponent },
+  { path: 'login', component: HomeComponent },
   {
-    path:'',
+    path: '',
     component: DefaultComponent,
-    children:[{
-      path:'',
-      component: HomeComponent
-    },{
-      path:'signup',
-      component: SignupComponent
-    },{
-      path:'forgetPassword',
-      component: ForgetPwComponent
-    }]
-  }
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'signup',
+        component: SignupComponent,
+      },
+      {
+        path: 'forgetPassword',
+        component: ForgetPwComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
