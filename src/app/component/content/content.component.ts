@@ -67,4 +67,16 @@ export class ContentComponent implements AfterViewInit, OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  editUser(id: string, userData: UserInfo) {
+    this.Data.editUser(id, userData).subscribe(() => {
+      this.getAllEmployee();
+    });
+  }
+
+  deleteUser(id: string) {
+    this.Data.deleteUser(id).subscribe(() => {
+      this.getAllEmployee();
+    });
+  }
 }

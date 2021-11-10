@@ -14,7 +14,7 @@ export class UserinfoService {
 
   getEmployeeInfo(): Observable<UserInfo[]> {
     return this.http.get<UserInfo[]>(`${this.baseUrl}/employee`);
-    // .pipe(catchError(console.log('err')));
+    // .pipe(catchError((err) =>  return throwError(err)));
   }
 
   userLogOut(): void {
@@ -32,10 +32,12 @@ export class UserinfoService {
     userData.password = 'example12';
     // console.log(this.http.post<UserInfo>(`${this.baseUrl}/register`, userData));
     return this.http.post<string>(`${this.baseUrl}/register`, userData);
+  }
 
-    // console.log(userData);
-
-    // deleteUser(id: string): Observable<unknown>{
-    //
+  deleteUser(id: string): Observable<string> {
+    return this.http.delete<string>(`${this.baseUrl}/employee/${id}`);
+  }
+  editUser(id: string, userInfo: UserInfo): Observable<string> {
+    return this.http.put<string>(`${this.baseUrl}/employee/${id}`, userInfo);
   }
 }

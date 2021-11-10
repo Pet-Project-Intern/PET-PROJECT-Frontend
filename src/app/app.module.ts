@@ -26,6 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DatePipe } from '@angular/common';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
