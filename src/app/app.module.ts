@@ -16,6 +16,7 @@ import { UserInfoComponent } from './component/user-info/user-info.component';
 import { NavComponent } from './component/nav/nav.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopupNewuserComponent } from './component/popup-newuser/popup-newuser.component';
+import { PopupEdituserComponent } from './component/popup-edituser/popup-edituser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -41,6 +42,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     BackgroundComponent,
     DefaultComponent,
     ForgetPwComponent,
+    PopupEdituserComponent,
   ],
   imports: [
     BrowserModule,

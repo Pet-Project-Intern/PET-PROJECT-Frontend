@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupNewuserComponent } from '../popup-newuser/popup-newuser.component';
+import { PopupEdituserComponent } from '../popup-edituser/popup-edituser.component';
 import { UserinfoService } from '../../service/userinfo.service';
 import { UserInfo } from 'src/app/types/user-info';
 
@@ -49,28 +50,36 @@ export class ContentComponent implements AfterViewInit, OnInit {
       (users) => {
         this.dataSource.data = users;
         this.dataSource.paginator = this.paginator;
-        //  this.dataSource.sort = this.sort;
-        console.log(this.dataSource);
       },
       (error) => console.log(error)
     );
   }
 
-  openDialog(): void {
+  openAddUser(): void {
     const dialogRef = this.dialog.open(PopupNewuserComponent, {
       width: '400px',
       height: '90vh',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.getAllEmployee();
-      console.log('The dialog was closed');
+      // this.getAllEmployee();
+      console.log('The adduser was closed');
     });
   }
+  openEditUser(userInfo: UserInfo): void {
+    const dialogRef = this.dialog.open(PopupEdituserComponent, {
+      width: '400px',
+      height: '90vh',
+      data: userInfo,
+    });
 
-  editUser(id: string, userData: UserInfo) {
-    this.Data.editUser(id, userData).subscribe(() => {
-      this.getAllEmployee();
+    dialogRef.afterClosed().subscribe((result: UserInfo) => {
+      // console.log(result);
+      // this.Data.editUser(result.id, result).subscribe((result) => {
+      //   console.log(result);
+      // });
+      console.log('The edituser was closed');
+      // this.getAllEmployee();
     });
   }
 

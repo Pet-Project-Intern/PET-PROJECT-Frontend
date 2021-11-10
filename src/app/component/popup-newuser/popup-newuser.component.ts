@@ -41,6 +41,8 @@ export class PopupNewuserComponent implements OnInit {
 
   onSubmit(): void {
     this.userInfo.userSave(this.addUserForm.value).subscribe();
+    location.reload();
+    this.onNoClick();
   }
 
   control(name: string) {

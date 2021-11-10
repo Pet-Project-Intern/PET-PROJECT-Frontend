@@ -2,7 +2,7 @@
   <div class="content">
     <h2>User Info</h2>
     <div class="action">
-      <button (click)="openDialog()" class="add-btn">Add User</button>
+      <button (click)="openAddUser()" class="add-btn">Add User</button>
       <div class="search-warpper">
         <input class="search" type="text" placeholder="Search User" />
         <fa-icon [icon]="faSearch"></fa-icon>
@@ -44,7 +44,7 @@
               <fa-icon [icon]="faEllipsisH"> </fa-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button (click)="editUser(element.id, element)" mat-menu-item>
+              <button (click)="openEditUser(element)" mat-menu-item>
                 <fa-icon [icon]="faEdit"> </fa-icon> Edit User
               </button>
               <button

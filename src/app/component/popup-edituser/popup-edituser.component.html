@@ -1,1 +1,126 @@
-<p>popup-edituser works!</p>
+<div class="popup-wrapper">
+  <fa-icon
+    (click)="onNoClick()"
+    class="close-icon"
+    [icon]="faTimesCircle"
+  ></fa-icon>
+  <div class="propup-title">
+    <h1 mat-dialog-title>Edit User</h1>
+    <span class="title-intro">Edit employee user.</span>
+  </div>
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="user-form">
+      <div class="input-wrapper">
+        <h4>Employee Name</h4>
+        <p
+          class="error"
+          *ngIf="control('name')?.errors?.required && control('name')?.touched"
+        >
+          *Name is required
+        </p>
+        <input
+          class="input"
+          type="text"
+          placeholder="employee name"
+          formControlName="name"
+        />
+      </div>
+      <div class="input-wrapper">
+        <h4>Email Address</h4>
+        <div>
+          <p
+            class="error"
+            *ngIf="
+              control('emailId')?.errors?.required &&
+              control('emailId')?.touched
+            "
+          >
+            *Email address is required
+          </p>
+        </div>
+        <p
+          class="error"
+          *ngIf="
+            !control('emailId')?.errors?.required &&
+            control('emailId')?.invalid &&
+            control('emailId')?.touched
+          "
+        >
+          *Email not valid
+        </p>
+        <input
+          class="input"
+          placeholder="email address"
+          formControlName="emailId"
+          type="text"
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <h4>Register Date</h4>
+        <p
+          class="error"
+          *ngIf="
+            control('registerDate')?.errors?.required &&
+            control('registerDate')?.touched
+          "
+        >
+          *Register date address is required
+        </p>
+        <div class="date-picker">
+          <input
+            placeholder="Choose a Date"
+            class="date-input"
+            matInput
+            [matDatepicker]="picker"
+            formControlName="registerDate"
+            matInput
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <h4>Assign Department</h4>
+        <p
+          class="error"
+          *ngIf="
+            control('department')?.errors?.required &&
+            control('department')?.touched
+          "
+        >
+          *Assign department is required
+        </p>
+        <div class="select-dep">
+          <mat-select
+            placeholder="Select Department"
+            formControlName="department"
+          >
+            <mat-option
+              *ngFor="let Department of Departments"
+              [value]="Department.value"
+            >
+              {{ Department.viewValue }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div mat-dialog-actions>
+        <button
+          type="submit"
+          class="register-btn"
+          [ngClass]="{ 'register-btn-active': !addUserForm.invalid }"
+          mat-button
+          [disabled]="addUserForm.invalid"
+        >
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
