@@ -28,6 +28,7 @@ import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSnackBarModule,
     NgHttpLoaderModule.forRoot(),
   ],
   providers: [DatePipe],
