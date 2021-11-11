@@ -4,7 +4,13 @@
     <div class="action">
       <button (click)="openAddUser()" class="add-btn">Add User</button>
       <div class="search-warpper">
-        <input class="search" type="text" placeholder="Search User" />
+        <input
+          class="search"
+          type="text"
+          placeholder="Search User"
+          [ngModel]="search"
+          (ngModelChange)="searchUser($event)"
+        />
         <fa-icon [icon]="faSearch"></fa-icon>
       </div>
     </div>
@@ -47,11 +53,15 @@
               <button (click)="openEditUser(element)" mat-menu-item>
                 <fa-icon [icon]="faEdit"> </fa-icon> Edit User
               </button>
+
+              <!-- <button (click)="deleteUser(element.id)" class="user-delete" mat-menu-item></button> -->
+
               <button
-                (click)="deleteUser(element.id)"
+                (click)="deleteUser(element.id, element.name)"
                 class="user-delete"
                 mat-menu-item
               >
+
                 <fa-icon [icon]="faTrash"> </fa-icon> Delete User
               </button>
             </mat-menu>
@@ -62,12 +72,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
-    <mat-paginator
-      class="paginator"
-      [pageSizeOptions]="[10]"
-      showFirstLastButtons
-      aria-label="Select page of periodic elements"
-    >
+    <mat-paginator class="paginator" [pageSizeOptions]="[10]" showFirstLastButtons
+      aria-label="Select page of periodic elements">
     </mat-paginator>
     <ng-http-loader></ng-http-loader>
   </div>

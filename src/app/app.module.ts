@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './component/home/home.component';
-import { SignupComponent } from './component/signup/signup.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SideNavComponent } from './component/side-nav/side-nav.component';
 import { ContentComponent } from './component/content/content.component';
@@ -24,10 +22,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { BackgroundComponent } from './shared/background/background.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HomeComponent } from './component/home/home.component';
 import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { LoginService } from './service/login.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SignupComponent } from './component/signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -35,8 +38,8 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     NavComponent,
     SideNavComponent,
     ContentComponent,
-    UserInfoComponent,
     HomeComponent,
+    UserInfoComponent,
     SignupComponent,
     PopupNewuserComponent,
     BackgroundComponent,
@@ -61,9 +64,10 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSnackBarModule,
     NgHttpLoaderModule.forRoot(),
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,LoginService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
