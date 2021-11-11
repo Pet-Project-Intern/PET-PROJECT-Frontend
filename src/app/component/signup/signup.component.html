@@ -1,30 +1,34 @@
 <div class="form header">
   <h1>Create Your Accounnt Here</h1>
   <h3>Enter Your Details Here To Create</h3>
+  <!-- <div>
+    <h3>{{message}}</h3>
+  </div> -->
   <div class="container">
     <div class="details">
-      <form [formGroup]="signupform">
+      <form [formGroup]="signupform" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="nameInput" class="form-label">Name</label>
+          <input type="text"  class="form-control" id="nameInput" placeholder="Your Name" formControlName="name">
+          <span class="errmsg" *ngIf="name && name.invalid && name.touched">Please Enter YourName</span>
+        </div>
         <div>
           <label for="emailInput" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" formControlName="email">
+          <input type="email"  class="form-control" id="emailInput" placeholder="name@example.com"
+            formControlName="email">
           <span class="errmsg" *ngIf="email && email.invalid && email.touched">Please Enter Valid Email</span>
-          <!-- <div *ngIf="submitted && f.email.errors && f.email.touched">
-            <span class="errmsg" *ngIf="f.email.errors.required">Please Enter Valid Email</span>
-          </div> -->
-          
+
         </div>
         <div>
           <label for="passwordInput" class="form-label">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="your password" formControlName="password">
-          <span class="errmsg" *ngIf="password && password.invalid && password.touched">Please Enter Atleast 6 Charater Password</span>
+          <input type="password" class="form-control" id="passwordInput" placeholder="your password"
+            formControlName="password">
+          <span class="errmsg" *ngIf="password && password.invalid && password.touched">Please Enter Atleast 6 Charater
+            Password</span>
         </div>
-        <!-- <div>
-          <label for="conpasswordInput" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="conpasswordInput" placeholder="confirm password" formControlName="confpassword">
-          <span class="errmsg" *ngIf="confpassword.errors.Validation">Password does not match</span>
-        </div> -->
-  
-        <button [disabled]="signupform.invalid" type="submit" class="btn" tabindex="-1" role="button" aria-disabled="true">Create Account</button>
+
+        <button [disabled]="signupform.invalid" type="submit" class="btn" tabindex="-1" role="button"
+          aria-disabled="true">Create Account</button>
       </form>
     </div>
     <div class="bottom">

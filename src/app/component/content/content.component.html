@@ -47,11 +47,7 @@
               <button (click)="openEditUser(element)" mat-menu-item>
                 <fa-icon [icon]="faEdit"> </fa-icon> Edit User
               </button>
-              <button
-                (click)="deleteUser(element.id)"
-                class="user-delete"
-                mat-menu-item
-              >
+              <button (click)="deleteUser(element.id)" class="user-delete" mat-menu-item>
                 <fa-icon [icon]="faTrash"> </fa-icon> Delete User
               </button>
             </mat-menu>
@@ -62,12 +58,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
-    <mat-paginator
-      class="paginator"
-      [pageSizeOptions]="[10]"
-      showFirstLastButtons
-      aria-label="Select page of periodic elements"
-    >
+    <mat-paginator class="paginator" [pageSizeOptions]="[10]" showFirstLastButtons
+      aria-label="Select page of periodic elements">
     </mat-paginator>
     <ng-http-loader></ng-http-loader>
   </div>
