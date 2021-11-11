@@ -29,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { LoginService } from './service/login.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { LoginService } from './service/login.service';
     FlexLayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSnackBarModule,
     NgHttpLoaderModule.forRoot(),
   ],
   providers: [DatePipe,LoginService],

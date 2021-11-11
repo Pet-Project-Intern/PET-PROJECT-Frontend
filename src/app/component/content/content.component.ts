@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   faSearch,
   faEllipsisH,
@@ -12,6 +18,7 @@ import { PopupNewuserComponent } from '../popup-newuser/popup-newuser.component'
 import { PopupEdituserComponent } from '../popup-edituser/popup-edituser.component';
 import { UserinfoService } from '../../service/userinfo.service';
 import { UserInfo } from 'src/app/types/user-info';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-content',
@@ -20,7 +27,11 @@ import { UserInfo } from 'src/app/types/user-info';
   providers: [UserinfoService],
 })
 export class ContentComponent implements AfterViewInit, OnInit {
-  constructor(public dialog: MatDialog, private Data: UserinfoService) {}
+  constructor(
+    public dialog: MatDialog,
+    private Data: UserinfoService,
+    private _snackBar: MatSnackBar
+  ) {}
   displayedColumns: string[] = [
     'userID',
     'name',
@@ -31,12 +42,14 @@ export class ContentComponent implements AfterViewInit, OnInit {
   ];
 
   dataSource = new MatTableDataSource<UserInfo>();
+  serchDataSource: UserInfo[] = [];
   faSearch = faSearch;
   faEllipsisH = faEllipsisH;
   faTrash = faTrash;
   faEdit = faEdit;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @Input() search: string | undefined;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -54,6 +67,14 @@ export class ContentComponent implements AfterViewInit, OnInit {
       (error) => console.log(error)
     );
   }
+  searchEmployeeData() {
+    this.Data.getEmployeeInfo().subscribe(
+      (users) => {
+        this.serchDataSource = users;
+      },
+      (error) => console.log(error)
+    );
+  }
 
   openAddUser(): void {
     const dialogRef = this.dialog.open(PopupNewuserComponent, {
@@ -62,7 +83,6 @@ export class ContentComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // this.getAllEmployee();
       console.log('The adduser was closed');
     });
   }
@@ -74,18 +94,33 @@ export class ContentComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: UserInfo) => {
-      // console.log(result);
-      // this.Data.editUser(result.id, result).subscribe((result) => {
-      //   console.log(result);
-      // });
       console.log('The edituser was closed');
-      // this.getAllEmployee();
     });
   }
 
-  deleteUser(id: string) {
-    this.Data.deleteUser(id).subscribe(() => {
+  deleteUser(id: string, name: string) {
+    if (confirm('Are you want to remove user , Name: ' + name)) {
+      this.Data.deleteUser(id).subscribe(() => {
+        this.getAllEmployee();
+        this._snackBar.open('User removed successful', 'ok');
+      });
+    }
+  }
+
+  searchUser(word: string) {
+    if (word.trim().length != 0) {
+      this.searchEmployeeData();
+      let filterdData = this.serchDataSource.filter((employee) => {
+        return (
+          employee.name.startsWith(word) ||
+          employee.emailId.startsWith(word) ||
+          employee.registerDate.startsWith(word)
+        );
+      });
+      this.dataSource.data = filterdData;
+      console.log(word);
+    } else {
       this.getAllEmployee();
-    });
+    }
   }
 }
