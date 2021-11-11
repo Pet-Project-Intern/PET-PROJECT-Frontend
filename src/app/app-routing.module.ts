@@ -12,19 +12,23 @@ const routes: Routes = [
     component: UserInfoComponent 
   },
   {
-    path:'',
+    path: '',
     component: DefaultComponent,
-    children:[{
-      path:'',
-      component: HomeComponent
-    },{
-      path:'signup',
-      component: SignupComponent
-    },{
-      path:'forgetPassword',
-      component: ForgetPwComponent
-    }]
-  }
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        path: 'signup',
+        component: SignupComponent,
+      },
+      {
+        path: 'forgetPassword',
+        component: ForgetPwComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

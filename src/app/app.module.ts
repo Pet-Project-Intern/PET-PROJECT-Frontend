@@ -15,6 +15,7 @@ import { UserInfoComponent } from './component/user-info/user-info.component';
 import { NavComponent } from './component/nav/nav.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopupNewuserComponent } from './component/popup-newuser/popup-newuser.component';
+import { PopupEdituserComponent } from './component/popup-edituser/popup-edituser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -24,6 +25,9 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './component/home/home.component';
 import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
     BackgroundComponent,
     DefaultComponent,
     ForgetPwComponent,
+    PopupEdituserComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,8 +60,10 @@ import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
     MatSelectModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

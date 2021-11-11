@@ -5,10 +5,8 @@
     [icon]="faTimesCircle"
   ></fa-icon>
   <div class="propup-title">
-    <h1 mat-dialog-title>Register New User</h1>
-    <span class="title-intro"
-      >Add New User Access to the System and Assign Assets.</span
-    >
+    <h1 mat-dialog-title>Edit User</h1>
+    <span class="title-intro">Edit employee user.</span>
   </div>
   <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
     <div mat-dialog-content class="user-form">
@@ -76,6 +74,7 @@
             matInput
             [matDatepicker]="picker"
             formControlName="registerDate"
+            matInput
           />
           <mat-datepicker-toggle
             matSuffix
@@ -119,7 +118,7 @@
           mat-button
           [disabled]="addUserForm.invalid"
         >
-          Add User
+          Save Changes
         </button>
       </div>
     </div>

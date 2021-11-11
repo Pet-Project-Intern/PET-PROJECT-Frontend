@@ -1,8 +1,8 @@
 <div class="container">
   <div class="content">
-    <h2>User Management</h2>
+    <h2>User Info</h2>
     <div class="action">
-      <button (click)="openDialog()" class="add-btn">Add User</button>
+      <button (click)="openAddUser()" class="add-btn">Add User</button>
       <div class="search-warpper">
         <input class="search" type="text" placeholder="Search User" />
         <fa-icon [icon]="faSearch"></fa-icon>
@@ -14,7 +14,7 @@
       <table class="user-table" mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="userID">
           <th mat-header-cell *matHeaderCellDef>User ID</th>
-          <td mat-cell *matCellDef="let element">{{ element.userID }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
 
         <ng-container matColumnDef="name">
@@ -25,7 +25,7 @@
 
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.emailId }}</td>
         </ng-container>
 
         <!-- Symbol Column -->
@@ -35,7 +35,7 @@
         </ng-container>
         <ng-container matColumnDef="assignDate">
           <th mat-header-cell *matHeaderCellDef>Assign Date</th>
-          <td mat-cell *matCellDef="let element">{{ element.assignDate }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.registerDate }}</td>
         </ng-container>
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef></th>
@@ -44,10 +44,14 @@
               <fa-icon [icon]="faEllipsisH"> </fa-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button (click)="openEditUser(element)" mat-menu-item>
                 <fa-icon [icon]="faEdit"> </fa-icon> Edit User
               </button>
-              <button class="user-delete" mat-menu-item>
+              <button
+                (click)="deleteUser(element.id)"
+                class="user-delete"
+                mat-menu-item
+              >
                 <fa-icon [icon]="faTrash"> </fa-icon> Delete User
               </button>
             </mat-menu>
@@ -65,5 +69,6 @@
       aria-label="Select page of periodic elements"
     >
     </mat-paginator>
+    <ng-http-loader></ng-http-loader>
   </div>
 </div>
