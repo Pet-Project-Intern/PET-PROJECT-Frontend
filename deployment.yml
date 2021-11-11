@@ -15,7 +15,7 @@ spec:  # What state you desire for the object
       containers:
         - name: angular-k8s-deployment
           image: petproject1997/pet-project-frontend:master
-          # imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 4200
 ---
