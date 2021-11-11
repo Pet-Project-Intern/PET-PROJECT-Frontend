@@ -18,6 +18,7 @@ spec:  # What state you desire for the object
           imagePullPolicy: Always
           ports:
             - containerPort: 4200
+      restartPolicy: Always      
 ---
     apiVersion: v1
     kind: Service
