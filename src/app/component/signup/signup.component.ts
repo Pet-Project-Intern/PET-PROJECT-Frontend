@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   faInsta = faInstagram;
 
   signupform = new FormGroup({
-    email: new FormControl('',[Validators.required,Validators.email]),
+    emailId: new FormControl('',[Validators.required,Validators.email]),
     password: new FormControl('',[Validators.required,Validators.minLength(6)]),
     name: new FormControl('',[Validators.required])
   })
@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
   }
 
   get email(){
-    return this.signupform .get('email');
+    return this.signupform .get('emailId');
   }
   get password(){
     return this.signupform.get('password');
