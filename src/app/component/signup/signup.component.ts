@@ -5,7 +5,8 @@ import {
   faLinkedin,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
-// import Validation from './custom.validator';
+import { LoginService } from 'src/app/service/login.service';
+import { User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-signup',
@@ -20,27 +21,24 @@ export class SignupComponent implements OnInit {
   signupform = new FormGroup({
     email: new FormControl('',[Validators.required,Validators.email]),
     password: new FormControl('',[Validators.required,Validators.minLength(6)]),
-    confpassword: new FormControl('',[Validators.required])
+    name: new FormControl('',[Validators.required])
   })
 
-  // signupform:FormGroup;
-  // submitted:boolean = false;
+  message:any;
+  constructor(
+    private login: LoginService,
+  ) {}
 
-  constructor() {
-    
-  }
-  // get f(){
-  //   return this.signupform.controls
-  // }
-
-  // onSubmit(){
-  //   this.submitted = true;
-  //   if(this.signupform.invalid){
-  //     return;
-  //   }
-  // }
   ngOnInit(): void {
     
+  }
+
+  onSubmit(): void{
+    let response = this.login.userAdd(this.signupform.value).subscribe();
+    // response.subscribe((data)=>this.message=data)
+    console.log(response);
+    console.log(this.signupform.value);
+    // location.reload();
   }
 
   get email(){
@@ -49,8 +47,8 @@ export class SignupComponent implements OnInit {
   get password(){
     return this.signupform.get('password');
   }
-  get confpassword(){
-    return this.signupform.get('confpassword');
+  get name(){
+    return this.signupform.get('name');
   }
   
 }

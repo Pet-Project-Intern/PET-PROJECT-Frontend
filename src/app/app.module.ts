@@ -28,7 +28,9 @@ import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { LoginService } from './service/login.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +67,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule,
     NgHttpLoaderModule.forRoot(),
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,LoginService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
