@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
         - name: angular-k8s-deployment
-          image: petproject1997/pet-project-frontend:master
+          image: petproject1997/pet-project-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 4200
-      restartPolicy: Always      
+      # restartPolicy: Always      
 ---
     apiVersion: v1
     kind: Service
@@ -28,10 +28,10 @@ spec:
         name: angular-k8s-deployment
     spec:
       ports:
-        - nodePort: 30170 # make the service available to network requests from external clients
-          port: 4200        # access the service via external port no
-          targetPort: 4200  # port number that container listening on
+        - nodePort: 30170 
+          port: 4200       
+          targetPort: 4200  
           protocol: TCP   
       selector:           
         app: angular-k8s-deployment
-      type: NodePort     # which expose the application on a port across a each of your nodes
+      type: NodePort     
