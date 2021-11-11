@@ -4,7 +4,13 @@
     <div class="action">
       <button (click)="openAddUser()" class="add-btn">Add User</button>
       <div class="search-warpper">
-        <input class="search" type="text" placeholder="Search User" />
+        <input
+          class="search"
+          type="text"
+          placeholder="Search User"
+          [ngModel]="search"
+          (ngModelChange)="searchUser($event)"
+        />
         <fa-icon [icon]="faSearch"></fa-icon>
       </div>
     </div>

@@ -50,8 +50,8 @@ export class PopupEdituserComponent implements OnInit {
     this.userInfo
       .editUser(this.addUserForm.value.id, this.addUserForm.value)
       .subscribe((result) => {
-        location.reload();
         this.onNoClick();
+        location.reload();
       });
   }
 
