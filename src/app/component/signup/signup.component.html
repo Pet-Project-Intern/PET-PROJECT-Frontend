@@ -1,77 +1,39 @@
 <div class="form header">
-    <h1>Create Your Accounnt Here</h1>
-    <h3>Enter Your Details Here To Create</h3>
-    <div class="container">
-      <div class="details">
+  <h1>Create Your Accounnt Here</h1>
+  <h3>Enter Your Details Here To Create</h3>
+  <div class="container">
+    <div class="details">
+      <form [formGroup]="signupform">
         <div>
-          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+          <label for="emailInput" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" formControlName="email">
+          <span class="errmsg" *ngIf="email && email.invalid && email.touched">Please Enter Valid Email</span>
+          <!-- <div *ngIf="submitted && f.email.errors && f.email.touched">
+            <span class="errmsg" *ngIf="f.email.errors.required">Please Enter Valid Email</span>
+          </div> -->
+          
         </div>
         <div>
-          <label for="" class="form-label">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="your password">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input type="password" class="form-control" id="passwordInput" placeholder="your password" formControlName="password">
+          <span class="errmsg" *ngIf="password && password.invalid && password.touched">Please Enter Atleast 6 Charater Password</span>
         </div>
-        <div>
-            <label for="" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="conpasswordInput" placeholder="Confirm password">
-        </div>
-
-        <a href="#" class="btn" tabindex="-1" role="button" aria-disabled="true">Create Account</a>
-      </div>
+        <!-- <div>
+          <label for="conpasswordInput" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="conpasswordInput" placeholder="confirm password" formControlName="confpassword">
+          <span class="errmsg" *ngIf="confpassword.errors.Validation">Password does not match</span>
+        </div> -->
+  
+        <button [disabled]="signupform.invalid" type="submit" class="btn" tabindex="-1" role="button" aria-disabled="true">Create Account</button>
+      </form>
+    </div>
     <div class="bottom">
       <p>
-        <fa-icon
-          [icon]="faFcebook"
-          [ngStyle]="{ color: '#24272E', margin: '4%' }"
-        ></fa-icon>
-        <fa-icon
-          [icon]="faLinkedin"
-          [ngStyle]="{ color: '#24272E', margin: '4%' }"
-        ></fa-icon>
-        <fa-icon
-          [icon]="faInsta"
-          [ngStyle]="{ color: '#24272E', margin: '4%' }"
-        ></fa-icon>
+        <fa-icon [icon]="faFcebook" [ngStyle]="{ color: '#24272E', margin: '4%' }"></fa-icon>
+        <fa-icon [icon]="faLinkedin" [ngStyle]="{ color: '#24272E', margin: '4%' }"></fa-icon>
+        <fa-icon [icon]="faInsta" [ngStyle]="{ color: '#24272E', margin: '4%' }"></fa-icon>
         <br />
         &copy;Allright Reserved
       </p>
     </div>
-</div>
-<!-- <div class="row">
-  <div class="col-12 col-md-6 header">
-    <h1>Easy Manage</h1>
-    <h3>Manage All Your Assets Easily</h3>
-    <img src="../../../assets/images/undraw_Real_time_sync_re_nky7.png" alt="" class="home-img">
   </div>
-  <div class="col-12 col-md-6 form header">
-    <h1>Create Your Accounnt Here</h1>
-    <h3>Enter Your Details Here To Create</h3>
-    <div class="container">
-      <div class="details">
-        <div>
-          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
-        </div>
-        <div>
-          <label for="" class="form-label">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="your password">
-        </div>
-        <div>
-            <label for="" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="conpasswordInput" placeholder="Confirm password">
-        </div>
-
-        <a href="#" class="btn" tabindex="-1" role="button" aria-disabled="true">Create Account</a>
-      </div>
-      <div class="bottom">
-        <p>
-          <fa-icon [icon]="faFcebook" [ngStyle]="{color:'#24272E', margin:'4%'}"></fa-icon>
-          <fa-icon [icon]="faLinkedin" [ngStyle]="{color:'#24272E' , margin:'4%'}"></fa-icon>
-          <fa-icon [icon]="faInsta" [ngStyle]="{color:'#24272E', margin:'4%'}"></fa-icon>
-          <br>
-          &copy;Allright Reserved
-        </p>
-      </div>
-    </div>
-  </div>
-</div> -->
