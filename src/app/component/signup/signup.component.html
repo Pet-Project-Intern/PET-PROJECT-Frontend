@@ -1,9 +1,9 @@
 <div class="form header">
   <h1>Create Your Accounnt Here</h1>
   <h3>Enter Your Details Here To Create</h3>
-  <!-- <div>
+  <div>
     <h3>{{message}}</h3>
-  </div> -->
+  </div>
   <div class="container">
     <div class="details">
       <form [formGroup]="signupform" (ngSubmit)="onSubmit()">
@@ -23,7 +23,7 @@
           <label for="passwordInput" class="form-label">Password</label>
           <input type="password" class="form-control" id="passwordInput" placeholder="your password"
             formControlName="password">
-          <span class="errmsg" *ngIf="password && password.invalid && password.touched">Please Enter Atleast 6 Charater
+          <span class="errmsg" *ngIf="password && password.invalid && password.touched">Please Enter Atleast 8 Charater
             Password</span>
         </div>
 
