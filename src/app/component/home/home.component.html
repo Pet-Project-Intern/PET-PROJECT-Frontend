@@ -3,11 +3,11 @@
   <h3>Login with your email and password</h3>
   <div class="container">
     <div class="details">
-      <form [formGroup]="loginform">
+      <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
         <div>
           <label for="email" class="form-label">Email address</label>
           <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"
-            formControlName="email">
+            formControlName="emailId">
           <span class="errmsg" *ngIf="email && email.invalid && email.touched">Please Enter Valid Email</span>
         </div>
         <div>
@@ -20,7 +20,7 @@
         <div class="pt-2">
           <h6 routerLink="/forgetPassword" [ngStyle]="{cursor:'help'}">Forget Password?</h6>
         </div>
-        <button [disabled]="loginform.invalid" class="btn" tabindex="-1" role="button" aria-disabled="true">Login</button>
+        <button [disabled]="loginform.invalid" type="submit" class="btn" tabindex="-1" role="button" aria-disabled="true">Login</button>
         <div class="line">
           <hr> or
           <hr>

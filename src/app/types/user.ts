@@ -5,5 +5,9 @@ export interface User{
     userCategory: string;
     department: string;
     registerDate: string;
+}
 
+export interface LoginUser{
+    emailId:string;
+    password:string;
 }
