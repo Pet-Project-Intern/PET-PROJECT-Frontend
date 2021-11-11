@@ -1,15 +1,15 @@
-apiVersion: apps/v1 # For versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1 
 kind: Deployment    
-metadata:   # Data that helps  uniquely identify the object (using name, UID and namespace)          
+metadata:           
   name: angular-k8s-deployment
-spec:  # What state you desire for the object              
-  selector:  # The selector field defines how the deployment finds which pod to manage       
+spec:              
+  selector:  
     matchLabels:
       app: angular-k8s-deployment
-  replicas: 1  # Tells the deployment to run 3 pods matching the template      
+  replicas: 1  
   template:
     metadata:
-      labels:  # Labels are used as indentifying attributes for objects such as pods and replication controller.      
+      labels:       
         app: angular-k8s-deployment
     spec:
       containers:
