@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { LoginService } from 'src/app/service/login.service';
+import { LoginUser, User } from 'src/app/types/user';
 
 
 @Component({
@@ -17,17 +19,27 @@ export class HomeComponent implements OnInit {
   faInsta = faInstagram;
 
   loginform = new FormGroup({
-    email: new FormControl('', [Validators.required,Validators.email]),
+    emailId: new FormControl('', [Validators.required,Validators.email]),
     password: new FormControl('', [Validators.required,Validators.minLength(6)]),
   })
 
-  constructor() { }
+  constructor(
+    private login: LoginService,
+  ) { }
+
+  // loginuser: LoginUser = new LoginUser();
 
   ngOnInit(): void {
   }
 
-  get email(){
-    return this.loginform.get('email');
+  onSubmit(): void {
+    let response = this.login.userLogin(this.emailId,this.password).subscribe();
+    console.log(this.loginform.value);
+    console.log(response);
+  }
+
+  get emailId(){
+    return this.loginform.get('emailId');
   }
   get password(){
     return this.loginform.get('password');

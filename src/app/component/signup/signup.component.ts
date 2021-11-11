@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   faFacebookSquare,
   faLinkedin,
@@ -20,13 +21,15 @@ export class SignupComponent implements OnInit {
 
   signupform = new FormGroup({
     emailId: new FormControl('',[Validators.required,Validators.email]),
-    password: new FormControl('',[Validators.required,Validators.minLength(6)]),
+    password: new FormControl('',[Validators.required,Validators.minLength(8)]),
     name: new FormControl('',[Validators.required])
   })
 
   message:any;
+
   constructor(
-    private login: LoginService,
+    private signup: LoginService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -34,10 +37,11 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(): void{
-    let response = this.login.userAdd(this.signupform.value).subscribe();
-    // response.subscribe((data)=>this.message=data)
-    console.log(response);
-    console.log(this.signupform.value);
+    let resp = this.signup.userAdd(this.signupform.value);
+    resp.subscribe((response)=>this.message=response)
+    console.log(resp);
+    // console.log(this.signupform.value);
+    // this.router.navigate(['/']);
     // location.reload();
   }
 
