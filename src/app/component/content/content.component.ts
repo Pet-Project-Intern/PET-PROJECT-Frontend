@@ -18,7 +18,7 @@ import { PopupNewuserComponent } from '../popup-newuser/popup-newuser.component'
 import { PopupEdituserComponent } from '../popup-edituser/popup-edituser.component';
 import { UserinfoService } from '../../service/userinfo.service';
 import { UserInfo } from 'src/app/types/user-info';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-content',
@@ -30,7 +30,7 @@ export class ContentComponent implements AfterViewInit, OnInit {
   constructor(
     public dialog: MatDialog,
     private Data: UserinfoService,
-    private formBuilder: FormBuilder
+    private _snackBar: MatSnackBar
   ) {}
   displayedColumns: string[] = [
     'userID',
@@ -40,9 +40,6 @@ export class ContentComponent implements AfterViewInit, OnInit {
     'assignDate',
     'action',
   ];
-  // searchForm: FormGroup = this.formBuilder.group({
-  //   search: this.formBuilder.control(''),
-  // });
 
   dataSource = new MatTableDataSource<UserInfo>();
   serchDataSource: UserInfo[] = [];
@@ -86,7 +83,6 @@ export class ContentComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // this.getAllEmployee();
       console.log('The adduser was closed');
     });
   }
@@ -98,19 +94,17 @@ export class ContentComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: UserInfo) => {
-      // console.log(result);
-      // this.Data.editUser(result.id, result).subscribe((result) => {
-      //   console.log(result);
-      // });
       console.log('The edituser was closed');
-      // this.getAllEmployee();
     });
   }
 
-  deleteUser(id: string) {
-    this.Data.deleteUser(id).subscribe(() => {
-      this.getAllEmployee();
-    });
+  deleteUser(id: string, name: string) {
+    if (confirm('Are you want to remove user , Name: ' + name)) {
+      this.Data.deleteUser(id).subscribe(() => {
+        this.getAllEmployee();
+        this._snackBar.open('User removed successful', 'ok');
+      });
+    }
   }
 
   searchUser(word: string) {
