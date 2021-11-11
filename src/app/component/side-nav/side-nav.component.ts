@@ -8,6 +8,7 @@ import {
   faBuilding,
   faChartBar,
 } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -22,10 +23,12 @@ export class SideNavComponent implements OnInit {
   faLaptopMedical = faLaptopMedical;
   faBuilding = faBuilding;
   faChartBar = faChartBar;
-  constructor(private Data: UserinfoService) {}
+  constructor(private Data: UserinfoService, private router: Router) {}
 
   logout() {
-    this.Data.userLogOut();
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+    // this.Data.userLogOut();
   }
   ngOnInit(): void {}
 }
