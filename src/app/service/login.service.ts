@@ -18,8 +18,8 @@ export class LoginService {
     return this.http.post<string>(`${this.baseUrl}/register`, userData);
   }
 
-  userLogin(email:string,password:string):Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/loginUser `+'emailId/'+email+'/password'+password).pipe(
+  userLogin(loginData:LoginUser):Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/loginUser? `+'emailId='+loginData.emailId+'password='+loginData.password).pipe(
       
     );
   }

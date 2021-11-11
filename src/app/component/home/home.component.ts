@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let response = this.login.userLogin(this.emailId,this.password).subscribe();
+    let response = this.login.userLogin(this.loginform.value).subscribe();
     console.log(this.loginform.value);
     console.log(response);
   }
 
-  get emailId(){
+  get email(){
     return this.loginform.get('emailId');
   }
   get password(){
