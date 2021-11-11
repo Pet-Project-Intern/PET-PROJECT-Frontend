@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   faLinkedin = faLinkedin;
   faInsta = faInstagram;
 
-  form = new FormGroup({
+  loginform = new FormGroup({
     email: new FormControl('', [Validators.required,Validators.email]),
     password: new FormControl('', [Validators.required,Validators.minLength(6)]),
   })
@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
   }
 
   get email(){
-    return this.form.get('email');
+    return this.loginform.get('email');
   }
   get password(){
-    return this.form.get('password');
+    return this.loginform.get('password');
   }
 }

@@ -37,4 +37,6 @@ body {
   position: absolute;
   text-align: center;
 }
-
+.errmsg{
+  color: #F94949;
+}
