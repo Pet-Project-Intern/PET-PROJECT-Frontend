@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   faSearch,
   faEllipsisH,
@@ -12,6 +18,7 @@ import { PopupNewuserComponent } from '../popup-newuser/popup-newuser.component'
 import { PopupEdituserComponent } from '../popup-edituser/popup-edituser.component';
 import { UserinfoService } from '../../service/userinfo.service';
 import { UserInfo } from 'src/app/types/user-info';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-content',
@@ -20,7 +27,11 @@ import { UserInfo } from 'src/app/types/user-info';
   providers: [UserinfoService],
 })
 export class ContentComponent implements AfterViewInit, OnInit {
-  constructor(public dialog: MatDialog, private Data: UserinfoService) {}
+  constructor(
+    public dialog: MatDialog,
+    private Data: UserinfoService,
+    private formBuilder: FormBuilder
+  ) {}
   displayedColumns: string[] = [
     'userID',
     'name',
@@ -29,14 +40,19 @@ export class ContentComponent implements AfterViewInit, OnInit {
     'assignDate',
     'action',
   ];
+  // searchForm: FormGroup = this.formBuilder.group({
+  //   search: this.formBuilder.control(''),
+  // });
 
   dataSource = new MatTableDataSource<UserInfo>();
+  serchDataSource: UserInfo[] = [];
   faSearch = faSearch;
   faEllipsisH = faEllipsisH;
   faTrash = faTrash;
   faEdit = faEdit;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @Input() search: string | undefined;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -50,6 +66,14 @@ export class ContentComponent implements AfterViewInit, OnInit {
       (users) => {
         this.dataSource.data = users;
         this.dataSource.paginator = this.paginator;
+      },
+      (error) => console.log(error)
+    );
+  }
+  searchEmployeeData() {
+    this.Data.getEmployeeInfo().subscribe(
+      (users) => {
+        this.serchDataSource = users;
       },
       (error) => console.log(error)
     );
@@ -87,5 +111,22 @@ export class ContentComponent implements AfterViewInit, OnInit {
     this.Data.deleteUser(id).subscribe(() => {
       this.getAllEmployee();
     });
+  }
+
+  searchUser(word: string) {
+    if (word.trim().length != 0) {
+      this.searchEmployeeData();
+      let filterdData = this.serchDataSource.filter((employee) => {
+        return (
+          employee.name.startsWith(word) ||
+          employee.emailId.startsWith(word) ||
+          employee.registerDate.startsWith(word)
+        );
+      });
+      this.dataSource.data = filterdData;
+      console.log(word);
+    } else {
+      this.getAllEmployee();
+    }
   }
 }
