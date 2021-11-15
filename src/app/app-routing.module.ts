@@ -6,11 +6,11 @@ import { HomeComponent } from './component/home/home.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { ForgetPwComponent } from './component/forget-pw/forget-pw.component';
+import { EmployeeDashboardComponent } from './component/employee-dashboard/employee-dashboard.component';
 
 const routes: Routes = [
-  { path: 'user',
-    component: UserInfoComponent 
-  },
+  { path: 'user', component: UserInfoComponent },
+  { path: 'employee', component: EmployeeDashboardComponent },
   {
     path: '',
     component: DefaultComponent,
