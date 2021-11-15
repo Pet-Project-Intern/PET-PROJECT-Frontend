@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
         - name: angular-k8s-deployment
-          image: petproject1997/pet-project-frontend:latest
+          image: petproject1997/pet-project-frontend:master
           imagePullPolicy: Always
           ports:
             - containerPort: 4200
-      # restartPolicy: Always      
+          
 ---
     apiVersion: v1
     kind: Service
