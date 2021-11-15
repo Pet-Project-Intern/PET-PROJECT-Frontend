@@ -30,6 +30,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { LoginService } from './service/login.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SignupComponent } from './component/signup/signup.component';
+import { EmployeeDashboardComponent } from './component/employee-dashboard/employee-dashboard.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { SignupComponent } from './component/signup/signup.component';
     DefaultComponent,
     ForgetPwComponent,
     PopupEdituserComponent,
+    EmployeeDashboardComponent,
   ],
   imports: [
     BrowserModule,
