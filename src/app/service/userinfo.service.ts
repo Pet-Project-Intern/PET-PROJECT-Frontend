@@ -10,9 +10,9 @@ import { DatePipe } from '@angular/common';
   
 })
 export class UserinfoService {
-  private baseUrl = 'http://127.0.0.1:2227/user';
+ // private baseUrl = 'http://127.0.0.1:2227/user';
   //base url is always changing
- //  private baseUrl = 'http://springboot-k8s:8084/user';
+   private baseUrl = 'http://springboot-k8s:8084/user';
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
